@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#2f5d3a"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Rayburn Herd">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-192.png"><link rel="stylesheet" href="styles.css">
+<title>Rayburn Herd</title>
+</head><body>
+<div id="app">
+<header class="topbar"><div><h1>🐄 Rayburn Herd</h1><p id="lastSaved">Loading herd…</p></div><button class="iconBtn" id="exportTop" title="Export">⇩</button></header>
+<main>
+<section id="dashboard" class="screen active">
+<div class="cards" id="summaryCards"></div>
+<div class="sectionHead"><h2>Quick Actions</h2></div>
+<div class="quickGrid">
+<button class="bigAction" data-action="add-cow">➕<span>Add Cow</span></button>
+<button class="bigAction" data-action="add-bull">🐂<span>Add Bull</span></button>
+<button class="bigAction" data-action="birth">🍼<span>Record Birth</span></button>
+<button class="bigAction" data-action="search">🔎<span>Find Cattle</span></button>
+</div>
+<div class="sectionHead"><h2>Recent Activity</h2></div><div id="recentActivity" class="list"></div>
+</section>
+<section id="cattle" class="screen"><div class="pageTitle"><div><h2>My Cattle</h2><p>Tap an animal for its full record.</p></div><button class="primary" data-action="add-animal">+ Add</button></div><div class="filters"><input id="searchBox" placeholder="Search tag, name, notes…"><select id="typeFilter"><option value="all">All Active</option><option value="Cow">Cows</option><option value="Bull">Bulls</option><option value="Calf - Heifer">Heifer Calves</option><option value="Calf - Steer">Steer Calves</option><option value="sold">Sold / Archived</option><option value="deceased">Deceased</option></select></div><div id="cattleList" class="list"></div></section>
+<section id="history" class="screen"><div class="pageTitle"><div><h2>Birth & Herd History</h2><p>See which calves came from each cow.</p></div></div><div id="cowHistory" class="list"></div></section>
+<section id="tools" class="screen"><div class="pageTitle"><div><h2>Backup & Export</h2><p>Keep a copy of your herd on your computer.</p></div></div><div class="toolCard"><h3>Export spreadsheet</h3><p>Creates a CSV file that opens in Microsoft Excel. It includes active, sold, and deceased records.</p><button class="primary wide" id="exportBtn">⇩ Export Spreadsheet (CSV)</button></div><div class="toolCard"><h3>Backup this app</h3><p>Save a full backup file. If you ever lose your phone data, this can restore your herd.</p><button class="secondary wide" id="backupBtn">⇩ Save Full Backup</button><label class="secondary wide fileLabel">⇧ Restore From Backup<input type="file" id="restoreFile" accept="application/json,.json"></label></div><div class="toolCard"><h3>Important</h3><p>Your working herd is stored on this iPhone. Export a spreadsheet or backup regularly—especially after major herd changes.</p></div></section>
+</main>
+<nav class="tabbar"><button class="tab active" data-screen="dashboard">🏠<span>Home</span></button><button class="tab" data-screen="cattle">🐄<span>Cattle</span></button><button class="tab" data-screen="history">📜<span>History</span></button><button class="tab" data-screen="tools">⚙️<span>Tools</span></button></nav>
+</div>
+<div id="modal" class="modal hidden"><div class="modalBox"><div class="modalHead"><h2 id="modalTitle">Add Animal</h2><button id="closeModal">✕</button></div><div id="modalBody"></div></div></div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>
